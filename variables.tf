@@ -17,3 +17,7 @@ variable "ansible_ssh_private_key_file" {
     type = string
     default = "~/.ssh/id_rsa.pub"
 }
+
+variable "resource_group_name" {
+    type = string
+}
