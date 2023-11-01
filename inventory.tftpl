@@ -1,0 +1,15 @@
+[master]
+master ansible_host=${master_ip}
+
+[workers]
+
+worker ansible_host=${worker_ip}
+
+
+
+
+[all:vars]
+ansible_python_interpreter=/usr/bin/python3
+ansible_ssh_extra_args='-o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null'
+ansible_ssh_private_key_file=/path/to/ssh-key
+ansible_user=ubuntu
