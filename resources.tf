@@ -60,7 +60,7 @@ resource "azurerm_linux_virtual_machine" "existant" {
 
   admin_ssh_key {
     username   = var.admin_name
-    public_key = file("${var.ansible_ssh_private_key_file}.pub") 
+    public_key = tls_private_key.key.public_key_pem
   }
 
   os_disk {
