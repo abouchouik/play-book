@@ -79,8 +79,8 @@ resource "azurerm_linux_virtual_machine" "existant" {
 # Generate inventory file
 resource "local_file" "ansible_inventory" {
    content  = templatefile("${path.module}/inventory.tftpl", {
-    master_ip = azurerm_network_interface.existant[var.master_vms[0]],
-    worker_ip = azurerm_network_interface.existant[var.worker_vms[0]],
+    master_ip = azurerm_network_interface.existant[var.master_vms[0]].private_ip_address,
+    worker_ip = azurerm_network_interface.existant[var.worker_vms[0]].private_ip_address,
     ansible_ssh_private_key_file = var.ansible_ssh_private_key_file
   })
   filename = "/home/azureuser/workspace/inventory.ini"
