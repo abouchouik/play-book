@@ -60,7 +60,7 @@ resource "azurerm_linux_virtual_machine" "existant" {
 
   admin_ssh_key {
     username   = var.admin_name
-    public_key = file("/home/azureuser/workspace/play-book/id_rsa.pub") 
+    public_key = file("./id_rsa.pub") 
   }
 
   os_disk {
@@ -83,5 +83,5 @@ resource "local_file" "ansible_inventory" {
     worker_ip = azurerm_network_interface.existant[var.worker_vms[0]].private_ip_address,
     ansible_ssh_private_key_file = var.ansible_ssh_private_key_file
   })
-  filename = "/home/azureuser/workspace/inventory.ini"
+  filename = "./inventory.ini"
 }
